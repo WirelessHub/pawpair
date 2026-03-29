@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PetTech - Get Started</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+<style>
+
+/* GENERAL */
+
+body{
+margin:0;
+font-family: 'Segoe UI', sans-serif;
+background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+color:white;
+}
+
+/* CONTAINER */
+
+.container{
+width:900px;
+height:520px;
+display:flex;
+border-radius:20px;
+overflow:hidden;
+box-shadow:0 15px 40px rgba(0,0,0,0.4);
+background:#111;
+}
+
+/* LEFT PANEL */
+
+.left-panel{
+flex:1;
+background:linear-gradient(135deg,#4ad0e2,#7af1da);
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:40px;
+}
+
+.left-panel h1{
+font-size:38px;
+margin-bottom:10px;
+}
+
+.left-panel p{
+font-size:15px;
+opacity:0.9;
+}
+
+.left-panel img{
+width:160px;
+margin-bottom:20px;
+}
+
+/* RIGHT PANEL */
+
+.right-panel{
+flex:1;
+background:#007a85;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+padding:40px;
+}
+
+/* FORM */
+
+.form{
+width:100%;
+max-width:300px;
+display:none;
+}
+
+.form.active{
+display:block;
+}
+
+.form h2{
+text-align:center;
+margin-bottom:20px;
+}
+
+input{
+width:100%;
+padding:12px;
+margin:10px 0;
+border:none;
+border-radius:8px;
+background:#222;
+color:white;
+}
+
+input:focus{
+outline:none;
+box-shadow:0 0 6px #00e4b5;
+}
+
+/* BUTTON */
+
+button{
+width:100%;
+padding:12px;
+border:none;
+border-radius:8px;
+background:#6bd6cd;
+color:black;
+font-weight:bold;
+cursor:pointer;
+margin-top:10px;
+transition:0.3s;
+}
+
+button:hover{
+background:#00c9a7;
+}
+
+/* SWITCH TEXT */
+
+.switch{
+text-align:center;
+margin-top:12px;
+font-size:14px;
+}
+
+.switch span{
+color:#5fc2e0;
+cursor:pointer;
+}
+
+/* SOCIAL LOGIN */
+
+.social{
+margin-top:20px;
+display:flex;
+gap:10px;
+}
+
+.social button{
+background:;
+color:white;
+font-size:13px;
+}
+
+.social button:hover{
+background:#333;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:850px){
+
+.container{
+flex-direction:column;
+height:auto;
+width:90%;
+}
+
+.left-panel{
+display:none;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container bg-sky-300">
+
+<!-- LEFT PANEL -->
+
+<div class="left-panel">
+
+<img src="https://cdn-icons-png.flaticon.com/512/616/616408.png">
+
+<h1 class="text-teal-200 text-2xl font-semibold">PawPair</h1>
+
+<p>
+Your smart companion for modern pet care.
+Track health, connect with vets, and manage your pets easily.
+</p>
+
+</div>
+
+
+<!-- RIGHT PANEL -->
+
+<div class="right-panel">
+
+<!-- SIGN IN -->
+
+<div class="form active" id="login bg-gradient-to-r from-teal-600 to-sky-500">
+
+<h2>Sign In</h2>
+
+<input type="email" class="ps-3" placeholder="Email :">
+
+<input type="password" class="mt-6 ps-3" placeholder="Password :">
+
+<button>Sign In</button>
+
+<div class="social">
+<button class="bg-red-600 py-3">Google</button>
+<button class="bg-blue-400 py-3">Apple</button>
+</div>
+
+<div class="switch">
+Don't have an account?
+<span onclick="switchForm()">Create one</span>
+</div>
+
+</div>
+
+
+<!-- SIGN UP -->
+
+<div class="form" id="signup">
+
+<h2>Create Account</h2>
+
+<input type="text" placeholder="Full Name">
+
+<input type="email" placeholder="Email">
+
+<input type="password" placeholder="Password">
+
+<button>Get Started</button>
+
+<div class="switch">
+Already have an account?
+<span onclick="switchForm()">Sign In</span>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+function switchForm(){
+
+let login=document.getElementById("login");
+let signup=document.getElementById("signup");
+
+login.classList.toggle("active");
+signup.classList.toggle("active");
+
+}
+
+</script>
+
+</body>
+</html>

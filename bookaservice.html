@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PetTech | Book a Service</title>
+
+<style>
+
+/* BODY */
+
+body{
+margin:0;
+font-family:'Segoe UI',sans-serif;
+background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+color:white;
+}
+
+/* CONTAINER */
+
+.container{
+width:420px;
+background:#161616;
+padding:40px;
+border-radius:18px;
+box-shadow:0 15px 40px rgba(0,0,0,0.4);
+}
+
+/* TITLE */
+
+h1{
+text-align:center;
+margin-bottom:10px;
+}
+
+.subtitle{
+text-align:center;
+font-size:14px;
+opacity:0.8;
+margin-bottom:30px;
+}
+
+/* FORM */
+
+input, select{
+width:100%;
+padding:12px;
+margin-bottom:15px;
+border:none;
+border-radius:8px;
+background:#222;
+color:white;
+font-size:14px;
+}
+
+/* INPUT FOCUS */
+
+input:focus, select:focus{
+outline:none;
+box-shadow:0 0 8px #00e4b5;
+}
+
+/* BUTTON */
+
+button{
+width:100%;
+padding:13px;
+border:none;
+border-radius:8px;
+background:#00e4b5;
+color:black;
+font-weight:bold;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+background:#00c9a7;
+}
+
+/* SERVICE GRID */
+
+.service-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:10px;
+margin-bottom:15px;
+}
+
+.service{
+background:#222;
+padding:10px;
+text-align:center;
+border-radius:8px;
+cursor:pointer;
+font-size:13px;
+transition:0.3s;
+}
+
+.service:hover{
+background:#00e4b5;
+color:black;
+}
+
+.service.active{
+background:#00e4b5;
+color:black;
+}
+
+/* POPUP */
+
+.popup{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.6);
+display:flex;
+align-items:center;
+justify-content:center;
+opacity:0;
+pointer-events:none;
+transition:0.3s;
+}
+
+.popup.active{
+opacity:1;
+pointer-events:auto;
+}
+
+.popup-box{
+background:#161616;
+padding:30px;
+border-radius:12px;
+text-align:center;
+width:300px;
+}
+
+.popup-box h2{
+color:#00e4b5;
+}
+
+.popup-box button{
+margin-top:15px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Book a Service</h1>
+<p class="subtitle">Schedule care for your pet in seconds</p>
+
+<form id="bookingForm">
+
+<label>Choose Service</label>
+
+<div class="service-grid">
+
+<div class="service" onclick="selectService(this)">Grooming</div>
+<div class="service" onclick="selectService(this)">Vet Visit</div>
+<div class="service" onclick="selectService(this)">Pet Walking</div>
+<div class="service" onclick="selectService(this)">Training</div>
+<div class="service" onclick="selectService(this)">Pet Boarding</div>
+<div class="service" onclick="selectService(this)">Pet Sitting</div>
+
+</div>
+
+<input type="hidden" id="selectedService">
+
+<label>Pet Name</label>
+<input type="text" placeholder="Enter your pet's name" required>
+
+<label>Pet Type</label>
+
+<select required>
+<option value="">Select Pet Type</option>
+<option>Dog</option>
+<option>Cat</option>
+<option>Bird</option>
+<option>Rabbit</option>
+<option>Other</option>
+</select>
+
+<label>Preferred Date</label>
+<input type="date" required>
+
+<label>Preferred Time</label>
+<input type="time" required>
+
+<button type="submit">Book Appointment</button>
+
+</form>
+
+</div>
+
+
+<!-- CONFIRMATION POPUP -->
+
+<div class="popup" id="popup">
+
+<div class="popup-box">
+
+<h2>Booking Confirmed!</h2>
+
+<p>Your pet service has been scheduled successfully.</p>
+
+<button onclick="closePopup()">Close</button>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* SELECT SERVICE */
+
+function selectService(element){
+
+let services=document.querySelectorAll(".service");
+
+services.forEach(s=>s.classList.remove("active"));
+
+element.classList.add("active");
+
+document.getElementById("selectedService").value=element.innerText;
+
+}
+
+/* FORM SUBMIT */
+
+document.getElementById("bookingForm").addEventListener("submit",function(e){
+
+e.preventDefault();
+
+document.getElementById("popup").classList.add("active");
+
+});
+
+/* CLOSE POPUP */
+
+function closePopup(){
+
+document.getElementById("popup").classList.remove("active");
+
+}
+
+</script>
+
+</body>
+</html>
